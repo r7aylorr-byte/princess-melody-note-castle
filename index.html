@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="theme-color" content="#e46cb5">
+  <title>Princess Melody's Note Castle</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="images/princess.svg">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <img src="images/princess.svg" alt="Princess Melody">
+        <div>
+          <h1>Note Castle</h1>
+          <p id="hello">Princess's castle</p>
+        </div>
+      </div>
+      <div class="star-pill" data-stars>⭐ 0</div>
+    </header>
+    <section id="home" class="screen active">
+      <div class="hero">
+        <img class="banner" src="images/castle.svg" alt="A pastel castle with a treble clef door, rainbows, and butterflies">
+        <div class="caption">
+          <strong>Welcome to the rainbow staff</strong>
+          <span>Find the note. Earn a charm. The butterflies keep score.</span>
+        </div>
+      </div>
+      <div class="grid">
+        <button class="card menu-btn" data-screen="learn"><span class="emoji">👑</span><strong>Lessons</strong><span>Lines, spaces, Middle C</span></button>
+        <button class="card menu-btn" data-screen="play-menu"><span class="emoji">🎵</span><strong>Practice</strong><span>Name the sparkle note</span></button>
+        <button class="card menu-btn" data-screen="garden"><span class="emoji">🦋</span><strong>Song Garden</strong><span>Twinkle and Mary</span></button>
+        <button class="card menu-btn" data-screen="chest"><span class="emoji">💖</span><strong>Charm Chest</strong><span>Bag buddies and bows</span></button>
+      </div>
+      <p class="tiny"><button id="grownups" type="button">Grown-ups</button></p>
+    </section>
+    <section id="learn" class="screen">
+      <h2>Princess lessons</h2>
+      <p class="lede">Each lesson shows the trick, then six notes. Five right opens a free chest.</p>
+      <div class="mnemonic"><strong>Lines:</strong> Every Good Butterfly Does Fly. E G B D F.<br><strong>Spaces:</strong> Fairy Always Collects Emeralds. F A C E.</div>
+      <div id="lessons" class="lesson-list"></div>
+    </section>
+    <section id="learn-detail" class="screen">
+      <button class="back" data-screen="learn" type="button">← Lessons</button>
+      <h2 id="learn-title">Lesson</h2>
+      <p id="learn-teach" class="lede"></p>
+      <div id="learn-staff" class="staff-wrap"></div>
+      <button id="learn-hear" class="ghost" type="button">Hear this note</button>
+      <button id="learn-go" class="primary" type="button">I'm ready</button>
+    </section>
+    <section id="play-menu" class="screen">
+      <h2>Practice</h2>
+      <p class="lede">Tap the letter. First try is worth two stars.</p>
+      <div class="lesson-list">
+        <button class="lesson" id="q-lines" type="button"><div class="badge">🦋</div><div><strong>Line notes</strong><span class="lede">Every Good Butterfly Does Fly</span></div></button>
+        <button class="lesson" id="q-spaces" type="button"><div class="badge">✨</div><div><strong>Space notes</strong><span class="lede">Fairy Always Collects Emeralds</span></div></button>
+        <button class="lesson" id="q-mix" type="button"><div class="badge">🌈</div><div><strong>Whole staff</strong><span class="lede">Lines and spaces together</span></div></button>
+        <button class="lesson" id="q-all" type="button"><div class="badge">👑</div><div><strong>Balcony notes</strong><span class="lede">Middle C and friends</span></div></button>
+      </div>
+    </section>
+    <section id="play" class="screen">
+      <button class="back" data-screen="play-menu" type="button">← Practice</button>
+      <h2 id="play-title">Name the note</h2>
+      <div id="staff" class="staff-wrap"></div>
+      <div id="feedback" class="feedback">What letter is this note?</div>
+      <div id="choices" class="choices"></div>
+      <button id="hear" class="ghost" type="button">Hear it again</button>
+    </section>
+    <section id="garden" class="screen">
+      <h2>Song Garden</h2>
+      <p class="lede">Read each note, tap its letter, and the song walks forward.</p>
+      <div id="songs" class="lesson-list"></div>
+    </section>
+    <section id="song" class="screen">
+      <button class="back" data-screen="garden" type="button">← Songs</button>
+      <h2 id="song-title">Song</h2>
+      <div id="pips" class="song-note"></div>
+      <div id="song-staff" class="staff-wrap"></div>
+      <div id="song-feedback" class="feedback">Tap the letter.</div>
+      <div class="keys">
+        <button class="key" data-letter="C" type="button">C<small>do</small></button>
+        <button class="key" data-letter="D" type="button">D<small>re</small></button>
+        <button class="key" data-letter="E" type="button">E<small>mi</small></button>
+        <button class="key" data-letter="F" type="button">F<small>fa</small></button>
+        <button class="key" data-letter="G" type="button">G<small>sol</small></button>
+        <button class="key" data-letter="A" type="button">A<small>la</small></button>
+        <button class="key" data-letter="B" type="button">B<small>ti</small></button>
+      </div>
+    </section>
+    <section id="chest" class="screen">
+      <h2>Charm Chest</h2>
+      <p class="lede" id="owned">0 charms</p>
+      <img class="chest-hero" src="images/chest.svg" alt="A pink treasure chest with butterflies">
+      <img class="chest-hero" src="images/charms.svg" alt="Butterfly clip, bag charm, halo pal, and castle treasures" style="margin-top:10px">
+      <div class="shop-row">
+        <button id="open-chest" class="primary" type="button">Open a chest · 8 ⭐</button>
+      </div>
+      <p class="lede">Lessons and finished songs open a free chest. Charms are castle originals: bag buddies, halo pals, claw clips, bead bracelets, and one secret fairy.</p>
+      <div id="collection" class="collection"></div>
+    </section>
+  </div>
+  <nav class="nav">
+    <button data-screen="home" class="on" type="button">Castle</button>
+    <button data-screen="learn" type="button">Learn</button>
+    <button data-screen="garden" type="button">Songs</button>
+    <button data-screen="chest" type="button">Charms</button>
+  </nav>
+  <div id="modal" class="modal">
+    <div class="sheet">
+      <div id="sheet-emoji" class="pop">💖</div>
+      <h2 id="sheet-title">A charm!</h2>
+      <p id="sheet-text"></p>
+      <div class="name-row">
+        <input id="name-input" maxlength="18" placeholder="Princess name">
+        <button id="save-name" class="primary" type="button" style="width:auto;padding:0 16px">Save</button>
+      </div>
+      <button id="sheet-close" class="ghost" type="button">Keep playing</button>
+      <p class="tiny"><button id="reset" type="button">Reset this iPad</button></p>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
