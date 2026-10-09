@@ -1,0 +1,12 @@
+{
+  "name": "Princess Melody's Note Castle",
+  "short_name": "Note Castle",
+  "description": "A rainbow music-reading castle for little princesses.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffe8f6",
+  "theme_color": "#e46cb5",
+  "icons": [{"src": "images/princess.svg", "sizes": "512x512", "type": "image/svg+xml", "purpose": "any"}]
+}
